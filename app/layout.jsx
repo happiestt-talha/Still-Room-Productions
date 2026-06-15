@@ -3,6 +3,17 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import JsonLd from '../components/JsonLd'
 
+// Next.js 14+ viewport export (themeColor moved out of metadata)
+export const viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: dark)', color: '#000000' },
+    { media: '(prefers-color-scheme: light)', color: '#0a0a0a' },
+  ],
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+}
+
 export const metadata = {
   metadataBase: new URL('https://www.stillroomproductions.com'),
 
@@ -56,6 +67,20 @@ export const metadata = {
 
   category: 'Film & Television Production',
 
+  // App icons & touch icons
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icon-192x192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/icon-512x512.png', sizes: '512x512', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+  },
+
+  manifest: '/site.webmanifest',
+
   robots: {
     index: true,
     follow: true,
@@ -90,8 +115,9 @@ export const metadata = {
 
   twitter: {
     card: 'summary_large_image',
-    site: '@stillroomprod', // update when Gerald provides handle
-    creator: '@geraldgyimah', // update when Gerald provides handle
+    // TODO: Replace with actual Twitter/X handles once Gerald provides them
+    site: '@stillroomprod',
+    creator: '@geraldgyimah',
     title: 'Still Room Productions — Independent Film Production',
     description: 'London-based independent production company developing formally restrained work for film and television.',
     images: ['/og-image.jpg'],
@@ -105,11 +131,7 @@ export const metadata = {
   },
 
   verification: {
-    google: process.env.NEXT_PUBLIC_GSC_VERIFICATION || 'REPLACE_WITH_GOOGLE_SEARCH_CONSOLE_VERIFICATION_CODE',
-  },
-
-  other: {
-    'theme-color': '#000000',
+    google: process.env.NEXT_PUBLIC_GSC_VERIFICATION || '',
   },
 }
 
